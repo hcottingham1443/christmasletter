@@ -53,13 +53,28 @@
     </div>
     <br>
     <br>
-    <form action="mailto:haley.cottingham@gmail.com" method="post" enctype="text/plain">
-Send me your thoughts!:<br>
-<input type="text" name="comment" size="50"><br><br>
-Name:<br>
-<input type="text" name="name"><br>
-<input type="submit" value="Send">
-<input type="reset" value="Reset">
+
+  <?php
+if ($_POST){
+
+$name = $_POST['name'];
+$content = $_POST['commentContent'];
+$handle = fopen("comments.html","a");
+fwrite ($handle,"<b>" . $name . "</b></br>" . $content . "</br>");
+fclose ($handle);}
+
+?>
+
+<html>
+<body>
+
+<form action="" method="POST">
+Content: <textarea rows ="10" cols ="30" name="commentContent"></textarea><br>
+Name: <input type = "text" name = "name"><br>
+<input type = "submit" value = "post!"><br>
 </form>
 
+<?php include "comments.html"; ?>
+</body>
+</html>
 </html>
