@@ -1,19 +1,23 @@
-<!DOCTYPE html>
+<?php
+if ($_POST){
+
+$name = $_POST['name'];
+$content = $_POST['commentContent'];
+$handle = fopen("comments.html","a");
+fwrite ($handle,"<b>" . $name . "</b></br>" . $content . "</br>");
+fclose ($handle);}
+
+?>
+
 <html>
-  <style>
-    div.main {
-  max-width: 700px;
-  margin: auto;
-  border: 5px dotted #006600;
-  padding: 15px;
-}
-  </style>
-<form action="/html/tags/html_form_tag_action.cfm" method="post">
-<div>
-<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
-Hey... say something!
-</textarea>
-</div>
-<input type="submit" value="Submit">
+<body>
+
+<form action="" method="POST">
+Content: <textarea rows ="10" cols ="30" name="commentContent"></textarea></br>
+Name: <input type = "text" name = "name"></br>
+<input type = "submit" value = "post!"></br>
 </form>
-    </html>
+
+<?php include "comments.html"; ?>
+</body>
+</html>
